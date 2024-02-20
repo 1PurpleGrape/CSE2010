@@ -16,8 +16,8 @@ int main(){
     cout << " float_example: " << sizeof(float_example) << endl;
     cout << " double_example: " << sizeof(double_example) << endl;
 
-    cout << " _example: " << sizeof(char_example) << endl;
-    cout << " _example: " << sizeof(bool_example) << endl; 
+    cout << " char_example: " << sizeof(char_example) << endl;
+    cout << " bool_example: " << sizeof(bool_example) << endl; 
 
 
 
