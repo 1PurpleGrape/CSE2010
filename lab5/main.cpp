@@ -3,30 +3,43 @@
 
 using namespace std;
 
+
+void displayEnd(RPG player1, RPG player2) {
+    if(player1.isAlive()){
+        printf("Player 1 wins\n");
+    }
+    else{
+        printf("Player 2 wins\n");
+    }
+
+}
+void displayStats (RPG player1, RPG player2){
+    printf("%s Health: %i %s Health: %i \n",player1.getName().c_str(), player1.getHealth(), player2.getName().c_str(), player2.getHealth());
+}
+
+void gameLoop(RPG * player1, RPG * player2){
+    int x=1;
+    while((*player1).isAlive() && (*player2).isAlive()){
+        displayStats((*player1),(*player2));
+        if(x%2==1){
+            printf("%s turn \n",((*player1).getName()).c_str());
+            (*player1).useSkills(player2);
+        }
+        else{
+            printf("%s turn \n",((*player2).getName()).c_str());
+            (*player2).useSkills(player1);
+        }
+        x++;
+    }
+}
 int main(){
 
-    RPG p1 = RPG("Wiz", 70, 45, 15, "mage");
+    RPG p1 = RPG("Wiz", 70, 45, 3, "mage") ;
     RPG p2 = RPG();
-
-    printf("%s Current Stats\n", p1.getName().c_str());
-    printf("Health: %i\t Strength: %i\t Defense: %i\n", p1.getHealth(), p1.getStrength(), p1.getDefense());
-
-    // DO THE SAME FOR p2
-    printf("%s Current Stats\n", p2.getName().c_str());
-    printf("Health: %i\t Strength: %i\t Defense: %i\n", p2.getHealth(), p2.getStrength(), p2.getDefense());
-    // CALL updateHealth(0) on either p1 and p2
-    p1.updateHealth(0);
-
-    
-    // Print out the new health
-    printf("%s Current Health\n", p1.getName().c_str());
-    printf("Health: %i\n",p1.getHealth());
-    // CALL isAlive() on both p1 and p2
-    printf("%s Current life status(0 means dead)\n", p1.getName().c_str());
-    printf("status: %i\n ",p1.isAlive());
-
-    printf("%s Current life status(0 means dead)\n", p2.getName().c_str());
-    printf("status: %i\n",p2.isAlive());
-
+ 
+    gameLoop(&p1, &p2);
+    displayEnd(p1, p2);
     return 0;
+
+
 }

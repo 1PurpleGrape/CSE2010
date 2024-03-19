@@ -13,8 +13,8 @@ class RPG {
         void setSkills();
         void printAction(string, RPG);
         void updateHealth(int new_health);
-        //void attack(RPG*);
-        //void useSkills(RPG*);
+        void attack(RPG*);
+        void useSkills(RPG*);
         bool isAlive() const;
         string getName() const;
         int getHealth() const;

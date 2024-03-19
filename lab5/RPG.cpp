@@ -62,16 +62,24 @@ using namespace std;
         health = new_health;
 
     }
-    /*
-    void RPG::attack(RPG*)
+    
+    void RPG::attack(RPG*opponent)
     {
-
+        (*opponent).updateHealth((*opponent).getHealth()-(getStrength()-(*opponent).getDefense()));
     }
-     void RPG::useSkills(RPG*)
+     void RPG::useSkills(RPG* opponent)
     {
-
+        int skillIndex;
+        for(int i=0;i<2;i++){
+            printf("Skill %i: %s\n", i, skills[i]. c_str());
+        }
+        cout << "Choose a skill to use: Enter 0 or 1\n";
+        cin>> skillIndex;
+        string chosen_skill = skills [skillIndex];
+        printAction(chosen_skill,*opponent);
+        attack(opponent);
     }
-    */
+    
    
      bool RPG::isAlive() const
     {
