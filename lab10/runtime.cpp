@@ -3,6 +3,8 @@
 #include <fstream>
 #include <ctime>
 using namespace std;
+#include <iostream>
+#include <chrono>
 
 
 /**
@@ -153,11 +155,14 @@ int main (){
     times.clear();
     // create another for loop to iterate through all the elements from elem_to_find.
     for(int j =0;j<elem_to_find.size();j++){
-        clock_t start_time = clock();
+        //clock_t start_time = clock();
+        auto start = chrono::high_resolution_clock::now();
         binarySearch(v,0,v.size(),elem_to_find[j]);
-        clock_t end_time = clock();
-        double elapsed_time_in_sec = (double(end_time-start_time)/CLOCKS_PER_SEC);
-        times.push_back(elapsed_time_in_sec);
+        //clock_t end_time = clock();
+        auto end = chrono::high_resolution_clock::now();
+        //double elapsed_time_in_sec = (double(end_time-start_time)/CLOCKS_PER_SEC);
+        auto duration = chrono::duration_cast<std::chrono::microseconds>(end - start);
+        times.push_back(duration.count());
 
     }
     // the code here should be nearly identical to the code from the previous lab
